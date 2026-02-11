@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cursojava.course.entities.Order;
-import com.cursojava.course.repositories.OrderReposity;
+import com.cursojava.course.repositories.OrderRepository;
 
 @Service
 public class OrderService {
 
 	@Autowired
-	private OrderReposity repository;
+	private OrderRepository repository;
 
 	public List<Order> findAll() {
 		return repository.findAll();

@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cursojava.course.entities.User;
-import com.cursojava.course.repositories.UserReposity;
+import com.cursojava.course.repositories.UserRepository;
 
 @Service
 public class UserService {
 
 	@Autowired
-	private UserReposity repository;
+	private UserRepository repository;
 	
 	public List<User> findAll(){
 		return repository.findAll();	

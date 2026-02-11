@@ -23,7 +23,7 @@ public enum OrderStatus {
 			if(value.getCode() == code) {
 				return value;
 			}
-		}//transforma o codigo em um string orderstatus 
+		}//transforma o codigo em tipo enumerado
 		throw new IllegalArgumentException("Invalid OrderStatus code");
 	}
 }
