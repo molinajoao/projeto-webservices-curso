@@ -32,4 +32,16 @@ public class UserService {
 		repository.deleteById(id);
 	}
 	
+	public User update(Long id, User obj) {
+		User entity = repository.getReferenceById(id);//esse get prepara o objeto monitorado pelo JPA para mexer e só depois enviar ao bd
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	//esse é o método para atualizar
+	private void updateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+	}
 }
