@@ -13,6 +13,8 @@ import com.cursojava.course.repositories.UserRepository;
 import com.cursojava.course.services.exceptions.DatabaseException;
 import com.cursojava.course.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class UserService {
 
@@ -42,9 +44,13 @@ public class UserService {
 	}
 	}
 	public User update(Long id, User obj) {
+		try {
 		User entity = repository.getReferenceById(id);//esse get prepara o objeto monitorado pelo JPA para mexer e só depois enviar ao bd
 		updateData(entity, obj);
 		return repository.save(entity);
+		}catch(EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 	}
 
 	//esse é o método para atualizar
